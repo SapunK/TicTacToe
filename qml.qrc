@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>WelcomeWindow.qml</file>
+        <file>NewGame1v1.qml</file>
+        <file>CustomBorder.qml</file>
+    </qresource>
+</RCC>
