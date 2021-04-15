@@ -9,7 +9,7 @@ ApplicationWindow {
     visible: true
     title: qsTr("TicTacToe")
 
-    readonly property color mainButtonColor: "#6600CC"
+    readonly property color mainAppColor: "#6600CC"
     readonly property color mainTextColor: "#CC0000"
     readonly property color mainBackgroundColor: "#C0C0C0"
 
@@ -17,6 +17,8 @@ ApplicationWindow {
         id: loader
         anchors.fill: parent
         source: "WelcomeWindow.qml"
+
+        onLoaded: loader.item.init()
     }
 
     function loadScreen(source){

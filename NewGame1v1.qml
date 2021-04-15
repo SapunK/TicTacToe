@@ -5,19 +5,24 @@ Rectangle {
     property color xColor: "#FF8000"
     property color oColor: "#CC0066"
 
+    property int xScore: 0
+    property int oScore: 0
+
     Connections {
         target: utils
         function onGameFinished(winner) {
-            lbTurn.text = ""
+            lbTurn.visible = false
             if(winner === 1) {
+                xScore++;
                 lbWinner.text = "Player X won"
                 lbWinner.color = xColor
             } else if( winner === 0) {
+                oScore++;
                 lbWinner.text = "Player O won"
                 lbWinner.color = oColor
             } else {
                 lbWinner.text = "Game finished with no winner"
-                lbWinner.color = mainButtonColor
+                lbWinner.color = mainAppColor
             }
 
             dlgGameWon.open()
@@ -30,11 +35,12 @@ Rectangle {
     property int rectWidth: parent.width * 0.285
     property bool firstPlayerTurn: true
 
-    Popup {
+    Dialog {
         id: dlgGameWon
         width: parent.width * 0.8
         height: parent.height * 0.25
         anchors.centerIn: parent
+        closePolicy: Popup.NoAutoClose
 
         Label {
             id: lbWinner
@@ -57,6 +63,7 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.leftMargin: 20
             anchors.bottomMargin: 20
+            onClicked: clearFields()
         }
 
         CustomButton {
@@ -67,29 +74,72 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.rightMargin: 20
             anchors.bottomMargin: 20
+            onClicked: mainWindow.loadScreen("WelcomeWindow.qml")
         }
     }
 
     Label {
-        id: lbTurn
+        id:lbScore
+        text: "Score"
         anchors.top: parent.top
+        width: parent.width
+        height: 30
+        font.pixelSize: 30
+        font.bold: true
+        anchors.topMargin: 30
+        horizontalAlignment: Text.AlignHCenter
+        color: mainAppColor
+    }
+
+    Label {
+        id:lbXScore
+        text: "X: " + xScore
+        anchors.top: lbScore.bottom
+        anchors.left: parent.left
+        width: parent.width / 2
+        height: 30
+        font.pixelSize: 30
+        font.bold: true
+        anchors.topMargin: 20
+        horizontalAlignment: Text.AlignHCenter
+        color: xColor
+    }
+
+    Label {
+        id:lbOScore
+        text: "O: " + oScore
+        anchors.top: lbScore.bottom
+        anchors.right: parent.right
+        width: parent.width / 2
+        height: 30
+        font.pixelSize: 30
+        font.bold: true
+        anchors.topMargin: 20
+        horizontalAlignment: Text.AlignHCenter
+        color: oColor
+    }
+
+    Label {
+        id: lbTurn
+        anchors.bottom: mainRect.top
         width: parent.width
         height: 30
         font.pixelSize: 25
         font.bold: true
-        anchors.topMargin: 50
+        anchors.bottomMargin: 80
         horizontalAlignment: Text.AlignHCenter
         color: firstPlayerTurn ? xColor : oColor
         text: firstPlayerTurn ? "X Player turn" : "O Player turn"
     }
 
     Rectangle {
-        anchors.top: lbTurn.bottom
+        id: mainRect
+        anchors.bottom: parent.bottom
         width: rectWidth * 3
         height: rectHeight * 3
         color: mainBackgroundColor
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: parent.height * 0.1
+        anchors.bottomMargin: parent.height * 0.2
 
         CustomField {
             id: rectLeftTop
@@ -296,5 +346,24 @@ Rectangle {
                 }
             }
         }
+    }
+
+    function clearFields() {
+        lbTurn.visible = true
+        rectLeftBottom.lblText = ""
+        rectLeftMid.lblText = ""
+        rectLeftTop.lblText = ""
+        rectTopMid.lblText = ""
+        rectMid.lblText = ""
+        rectBottomMid.lblText = ""
+        rectTopRight.lblText = ""
+        rectRightMid.lblText = ""
+        rectRightBottom.lblText = ""
+        dlgGameWon.close()
+        utils.setDefaultValues()
+    }
+
+    function init() {
+        utils.setDefaultValues()
     }
 }

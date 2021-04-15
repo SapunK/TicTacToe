@@ -10,6 +10,7 @@ public:
     Utils(QObject *parent = nullptr);
 
     Q_INVOKABLE void fillValue(int i, int j, int value);
+    Q_INVOKABLE void setDefaultValues();
     void checkForWinner();
 
 signals:

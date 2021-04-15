@@ -47,18 +47,9 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "Exit game"
+        onClicked: Qt.quit()
     }
 
-    Label {
-        id: lblMadeBy
-        text: "Made by: \nKostic"
-        font.bold: true
-        font.pixelSize: 13
-        color: mainTextColor
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 20
-        anchors.rightMargin: 20
-    }
+    function init(){}
 }
 

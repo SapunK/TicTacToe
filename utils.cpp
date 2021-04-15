@@ -1,9 +1,17 @@
 #include "utils.h"
 
-#include <QDebug>
-
 Utils::Utils(QObject *parent) :
     QObject(parent)
+{
+}
+
+void Utils::fillValue(int i, int j, int value)
+{
+    m_values[i][j] = value;
+    checkForWinner();
+}
+
+void Utils::setDefaultValues()
 {
     for(int i = 0 ; i < 3 ; i++)
     {
@@ -12,12 +20,6 @@ Utils::Utils(QObject *parent) :
             m_values[i][j] = -1;
         }
     }
-}
-
-void Utils::fillValue(int i, int j, int value)
-{
-    m_values[i][j] = value;
-    checkForWinner();
 }
 
 void Utils::checkForWinner()

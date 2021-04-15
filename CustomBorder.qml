@@ -14,7 +14,7 @@ Rectangle
 
     z : -1
 
-    property string borderColor : mainButtonColor
+    property string borderColor : mainAppColor
 
     color: borderColor
 //    radius: 10

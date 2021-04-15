@@ -8,7 +8,7 @@ Button {
     background: Rectangle{
         height: parent.height
         width: parent.width
-        color: mainButtonColor
+        color: mainAppColor
         radius: 12
         Text {
             anchors.fill: parent
