@@ -3,18 +3,18 @@ import QtQuick 2.0
 Rectangle
 {
 
-    property bool commonBorder : true
+    property bool commonBorder : false
 
-    property int lBorderwidth : 1
-    property int rBorderwidth : 1
-    property int tBorderwidth : 1
-    property int bBorderwidth : 1
+    property int lBorderwidth : 0
+    property int rBorderwidth : 0
+    property int tBorderwidth : 0
+    property int bBorderwidth : 0
 
     property int commonBorderWidth : 1
 
     z : -1
 
-    property string borderColor : "white"
+    property string borderColor : mainButtonColor
 
     color: borderColor
 //    radius: 10

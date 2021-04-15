@@ -4,5 +4,7 @@
         <file>WelcomeWindow.qml</file>
         <file>NewGame1v1.qml</file>
         <file>CustomBorder.qml</file>
+        <file>CustomButton.qml</file>
+        <file>CustomField.qml</file>
     </qresource>
 </RCC>

@@ -19,79 +19,34 @@ Rectangle {
         color: mainTextColor
     }
 
-    Button {
+    CustomButton {
         id:btnNew
         anchors.top: lblTitle.bottom
         anchors.topMargin: parent.height / 8
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
-        height: 50
-        background: Rectangle{
-            height: parent.height
-            width: parent.width
-            color: mainButtonColor
-            radius: 12
-            Text {
-                anchors.fill: parent
-                text: "New game"
-                color: "white"
-                font.bold: true
-                font.pixelSize: 20
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
-        }
+        buttonText: "New game"
         onClicked: {
             mainWindow.loadScreen("NewGame1v1.qml")
         }
     }
 
-    Button {
+    CustomButton {
         id:btnCredits
         anchors.top: btnNew.bottom
         anchors.topMargin: 40
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
-        height: 50
-        background: Rectangle{
-            height: parent.height
-            width: parent.width
-            color: mainButtonColor
-            radius: 12
-            Text {
-                anchors.fill: parent
-                text: "Credits"
-                color: "white"
-                font.bold: true
-                font.pixelSize: 20
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
-        }
+        buttonText: "Credits"
     }
 
-    Button {
+    CustomButton {
         id:btnExit
         anchors.top: btnCredits.bottom
         anchors.topMargin: 40
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
-        height: 50
-        background: Rectangle{
-            height: parent.height
-            width: parent.width
-            color: mainButtonColor
-            radius: 12
-            Text {
-                anchors.fill: parent
-                text: "Exit game"
-                color: "white"
-                font.bold: true
-                font.pixelSize: 20
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
-        }
+        buttonText: "Exit game"
     }
 
     Label {

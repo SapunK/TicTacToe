@@ -26,6 +26,9 @@ void Utils::checkForWinner()
     int secondPlayer = 0;
     int firstPlayerD = 0;
     int secondPlayerD = 0;
+    int firstPlayerD2 = 0;
+    int secondPlayerD2 = 0;
+    int noWinner = 0;
 
     //rows and diagonal
     for(int i = 0 ; i < 3 ; i++)
@@ -34,27 +37,41 @@ void Utils::checkForWinner()
         secondPlayer = 0;
         for(int j = 0 ; j < 3 ; j++)
         {
+            if(m_values[i][j] != -1)
+                noWinner++;
 
             if(m_values[i][j] == 1){
                 firstPlayer++;
-                if(i == j || (i == 0 && j == 2) || (i == 2 && j == 0))
+                //left to right, top to bottom diagonal
+                if (i == j) {
                     firstPlayerD++;
-            }
-            else if(m_values[i][j] == 0){
+                }
+                //right to left, top to bottom diagonal
+                if (i + j == 2) {
+                    firstPlayerD2++;
+                }
+            } else if (m_values[i][j] == 0){
                 secondPlayer++;
-                if(i == j || (i == 0 && j == 2) || (i == 2 && j == 0))
+                //left to right, top to bottom diagonal
+                if(i == j) {
                     secondPlayerD++;
+                }
+                //right to left, top to bottom diagonal
+                if (i + j == 2) {
+                    secondPlayerD2++;
+                }
             }
 
-            if(firstPlayer == 3 || firstPlayerD == 3){
+            if(firstPlayer == 3 || firstPlayerD == 3 || firstPlayerD2 == 3){
                 emit gameFinished(1);
                 return;
-            } else if(secondPlayer == 3 || secondPlayerD == 3){
+            } else if(secondPlayer == 3 || secondPlayerD == 3 || secondPlayerD2 == 3){
                 emit gameFinished(0);
                 return;
             }
         }
     }
+
 
     //columns
     for(int i = 0 ; i < 3 ; i++)
@@ -76,5 +93,10 @@ void Utils::checkForWinner()
                 return;
             }
         }
+    }
+
+    if(noWinner == 9) {
+        emit gameFinished(-1);
+        return;
     }
 }
