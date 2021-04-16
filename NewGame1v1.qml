@@ -38,7 +38,7 @@ Rectangle {
     Dialog {
         id: dlgGameWon
         width: parent.width * 0.8
-        height: parent.height * 0.25
+        height: lbWinner.height + btnNewGame.height + 80
         anchors.centerIn: parent
         closePolicy: Popup.NoAutoClose
 
