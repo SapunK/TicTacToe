@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.14.2, 2021-04-13T15:53:06. -->
+<!-- Written by QtCreator 4.14.2, 2021-04-19T13:00:00. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -347,8 +347,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">TicTacToe</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:/home/kostic/TicTacToe/TicTacToe.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/kostic/TicTacToe/TicTacToe.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:/home/kostic/Projects/TicTacToe/TicTacToe.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/kostic/Projects/TicTacToe/TicTacToe.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>

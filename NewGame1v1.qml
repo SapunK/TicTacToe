@@ -35,6 +35,15 @@ Rectangle {
     property int rectWidth: parent.width * 0.285
     property bool firstPlayerTurn: true
 
+    focus: true
+
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Back) {
+            mainWindow.loadScreen("WelcomeWindow.qml")
+            event.accepted = true
+        }
+    }
+
     Dialog {
         id: dlgGameWon
         width: parent.width * 0.8

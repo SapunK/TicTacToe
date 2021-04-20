@@ -5,29 +5,25 @@ Rectangle {
 
     color: mainBackgroundColor
 
-    Label {
-        id: lblTitle
+
+    Image {
+        id: logo
+        source: "qrc:/pictures/icon"
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        horizontalAlignment: Text.AlignHCenter
         anchors.topMargin: parent.height / 8
-        width: 150
-        height: 30
-        text: "Tic Tac Toe"
-        font.pixelSize: 25
-        font.bold: true
-        color: mainTextColor
+        width: parent.width * 0.6
+        height: parent.width * 0.6
     }
-
     CustomButton {
         id:btnNew
-        anchors.top: lblTitle.bottom
-        anchors.topMargin: parent.height / 8
+        anchors.top: logo.bottom
+        anchors.topMargin: parent.height * 0.08
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "New game"
         onClicked: {
-            mainWindow.loadScreen("NewGame1v1.qml")
+            mainWindow.loadScreen("GameMode.qml")
         }
     }
 

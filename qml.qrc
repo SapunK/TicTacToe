@@ -6,5 +6,8 @@
         <file>CustomBorder.qml</file>
         <file>CustomButton.qml</file>
         <file>CustomField.qml</file>
+        <file>GameMode.qml</file>
+        <file>PlayingField.qml</file>
+        <file>GameVsAI.qml</file>
     </qresource>
 </RCC>
