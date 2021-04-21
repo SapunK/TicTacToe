@@ -5,7 +5,6 @@ Rectangle {
 
     color: mainBackgroundColor
 
-
     Image {
         id: logo
         source: "qrc:/pictures/icon"

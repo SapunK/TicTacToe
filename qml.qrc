@@ -9,5 +9,6 @@
         <file>GameMode.qml</file>
         <file>PlayingField.qml</file>
         <file>GameVsAI.qml</file>
+        <file>Game.qml</file>
     </qresource>
 </RCC>

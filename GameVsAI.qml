@@ -1,15 +1,17 @@
 import QtQuick 2.0
 
-Rectangle {
+Game {
+    id:game
+    Connections {
+        target: utils
+        function onAiFieldFilled(i, j) {
+            game.fillField(i, j, 0);
+        }
+    }
 
-    property int rectHeight: parent.width * 0.285
-    property int rectWidth: parent.width * 0.285
-    property bool firstPlayerTurn: true
-
-    PlayingField {
-        anchors.bottom: parent.bottom
-        width: rectWidth * 3
-        height: rectHeight * 3
+    function init(){
+        game.setAiGame(true)
+        utils.setDefaultValues()
     }
 
 }

@@ -12,9 +12,11 @@ public:
     Q_INVOKABLE void fillValue(int i, int j, int value);
     Q_INVOKABLE void setDefaultValues();
     void checkForWinner();
+    Q_INVOKABLE void aiFillField();
 
 signals:
     void gameFinished(int winner);
+    void aiFieldFilled(int i, int j);
 private:
     int m_values[3][3];
 };

@@ -7,10 +7,12 @@ Rectangle {
     property int rectHeight: parent.width * 0.285
     property int rectWidth: parent.width * 0.285
     property bool firstPlayerTurn: true
-    property color xColor: "#FF8000"
-    property color oColor: "#CC0066"
+    property bool bAiGame: false
     color: mainBackgroundColor
     focus: true
+
+    property color xColor: "#FF8000"
+    property color oColor: "#CC0066"
 
     Connections {
         target: utils
@@ -142,6 +144,10 @@ Rectangle {
         anchors.bottom: parent.bottom
         width: rectWidth * 3
         height: rectHeight * 3
+
+        onAiTurn: {
+            utils.aiFillField()
+        }
     }
 
     function clearFields() {
@@ -151,7 +157,17 @@ Rectangle {
         playingField.clearFields()
     }
 
-    function init() {
-        utils.setDefaultValues()
+    function setAiGame(bAiGame) {
+        playingField.aiGame = bAiGame
+    }
+
+    function fillField(i, j, value) {
+        if(!isGameFinished())
+            playingField.fillField(i, j, value);
+    }
+
+    function isGameFinished() {
+        return playingField.gameFinished
     }
 }
+

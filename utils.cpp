@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <QDebug>
 
 Utils::Utils(QObject *parent) :
     QObject(parent)
@@ -100,5 +101,21 @@ void Utils::checkForWinner()
     if(noWinner == 9) {
         emit gameFinished(-1);
         return;
+    }
+}
+
+void Utils::aiFillField()
+{
+    for(int i = 0 ; i < 3 ; i++)
+    {
+        for(int j = 0 ; j < 3 ; j++)
+        {
+            if(m_values[i][j] == -1){
+                m_values[i][j] = 0;
+                emit aiFieldFilled(i, j);
+                checkForWinner();
+                return;
+            }
+        }
     }
 }

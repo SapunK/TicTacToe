@@ -1,10 +1,14 @@
 import QtQuick 2.0
 
 Rectangle {
-    id: mainRect
+    property bool gameFinished: false
+    property bool aiGame: false
+
     color: mainBackgroundColor
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottomMargin: parent.height * 0.2
+
+    signal aiTurn()
 
     CustomField {
         id: rectLeftTop
@@ -25,6 +29,9 @@ Rectangle {
                 rectLeftTop.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(0, 0, rectLeftTop.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
     }
@@ -43,12 +50,15 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(rectLeftMid.lblText != "")
+                if(rectLeftMid.lblText != "" || gameFinished)
                     return
 
                 rectLeftMid.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(1, 0, rectLeftMid.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
     }
@@ -66,12 +76,15 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(rectLeftBottom.lblText != "")
+                if(rectLeftBottom.lblText != "" || gameFinished)
                     return
 
                 rectLeftBottom.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(2, 0, rectLeftBottom.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
     }
@@ -90,12 +103,15 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(rectTopMid.lblText != "")
+                if(rectTopMid.lblText != "" || gameFinished)
                     return
 
                 rectTopMid.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(0, 1, rectTopMid.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
     }
@@ -113,12 +129,15 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(rectTopRight.lblText != "")
+                if(rectTopRight.lblText != "" || gameFinished)
                     return
 
                 rectTopRight.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(0, 2, rectTopRight.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
     }
@@ -132,12 +151,15 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(rectMid.lblText != "")
+                if(rectMid.lblText != "" || gameFinished)
                     return
 
                 rectMid.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(1, 1, rectMid.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
     }
@@ -157,12 +179,15 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(rectRightMid.lblText != "")
+                if(rectRightMid.lblText != "" || gameFinished)
                     return
 
                 rectRightMid.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(1, 2, rectRightMid.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
     }
@@ -182,12 +207,15 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(rectBottomMid.lblText != "")
+                if(rectBottomMid.lblText != "" || gameFinished)
                     return
 
                 rectBottomMid.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(2, 1, rectBottomMid.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
     }
@@ -202,13 +230,52 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(rectRightBottom.lblText != "")
+                if(rectRightBottom.lblText != "" || gameFinished)
                     return
 
                 rectRightBottom.lblText = firstPlayerTurn ? "X" : "O"
                 utils.fillValue(2, 2, rectRightBottom.lblText == "X" ? 1 : 0)
                 firstPlayerTurn = !firstPlayerTurn
+
+                if(aiGame && !firstPlayerTurn)
+                    aiTurn()
             }
         }
+    }
+
+    function clearFields() {
+        rectLeftBottom.lblText = ""
+        rectLeftMid.lblText = ""
+        rectLeftTop.lblText = ""
+        rectTopMid.lblText = ""
+        rectMid.lblText = ""
+        rectBottomMid.lblText = ""
+        rectTopRight.lblText = ""
+        rectRightMid.lblText = ""
+        rectRightBottom.lblText = ""
+        gameFinished = false
+    }
+
+    function fillField(i, j, value) {
+        if(i === 0 && j === 0) {
+            rectLeftTop.lblText = value === 1 ? "X" : "O"
+        } else if(i === 0 && j === 1) {
+            rectTopMid.lblText = value === 1 ? "X" : "O"
+        } else if(i === 0 && j === 2) {
+            rectTopRight.lblText = value === 1 ? "X" : "O"
+        } else if(i === 1 && j === 0) {
+            rectLeftMid.lblText = value === 1 ? "X" : "O"
+        } else if(i === 1 && j === 1) {
+            rectMid.lblText = value === 1 ? "X" : "O"
+        } else if(i === 1 && j === 2) {
+            rectLeftMid.lblText = value === 1 ? "X" : "O"
+        } else if(i === 2 && j === 0) {
+            rectLeftBottom.lblText = value === 1 ? "X" : "O"
+        } else if(i === 2 && j === 1) {
+            rectBottomMid.lblText = value === 1 ? "X" : "O"
+        } else if(i === 2 && j === 2) {
+            rectRightBottom.lblText = value === 1 ? "X" : "O"
+        }
+        firstPlayerTurn = !firstPlayerTurn
     }
 }
