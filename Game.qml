@@ -32,7 +32,7 @@ Rectangle {
             }
             playingField.gameFinished = true
             utils.setGameFinished(true)
-            dlgGameWon.open()
+            timer.start()
         }
     }
 
@@ -41,6 +41,13 @@ Rectangle {
             mainWindow.loadScreen("GameMode.qml")
             event.accepted = true
         }
+    }
+
+    Timer {
+        id:timer
+        interval: 500
+        repeat: false
+        onTriggered: dlgGameWon.open()
     }
 
     Dialog {
