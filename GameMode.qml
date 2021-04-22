@@ -18,8 +18,8 @@ Rectangle {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: parent.height * 0.04
-        width: parent.height * 0.3
-        height: parent.height * 0.3
+        width: parent.height * 0.25
+        height: parent.height * 0.25
     }
 
     CustomButton {
