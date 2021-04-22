@@ -6,7 +6,7 @@ Rectangle {
 
     color: mainBackgroundColor
     anchors.horizontalCenter: parent.horizontalCenter
-    anchors.bottomMargin: parent.height * 0.2
+    anchors.bottomMargin: parent.height * 0.05
 
     signal aiTurn()
 

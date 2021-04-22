@@ -2,12 +2,14 @@ import QtQuick 2.0
 import QtQuick.Controls 2.12
 
 Rectangle {
+    id:game
     property int xScore: 0
     property int oScore: 0
-    property int rectHeight: parent.width * 0.285
-    property int rectWidth: parent.width * 0.285
+    property int rectHeight: parent.height * 0.15
+    property int rectWidth: parent.height * 0.15
     property bool firstPlayerTurn: true
     property bool bAiGame: false
+    property bool turnVisible: true
     color: mainBackgroundColor
     focus: true
 
@@ -89,6 +91,7 @@ Rectangle {
             id:btnNewGame
             buttonText: "New game"
             anchors.left: parent.left
+            height: game.height * 0.08
             width: parent.width * 0.4
             anchors.bottom: parent.bottom
             anchors.leftMargin: 20
@@ -100,6 +103,7 @@ Rectangle {
             id:btnMainMenu
             buttonText: "Main menu"
             anchors.right: parent.right
+            height: game.height * 0.08
             width: parent.width * 0.4
             anchors.bottom: parent.bottom
             anchors.rightMargin: 20
@@ -160,11 +164,12 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         color: firstPlayerTurn ? xColor : oColor
         text: firstPlayerTurn ? "X Player turn" : "O Player turn"
+        visible: turnVisible
     }
 
     PlayingField {
         id: playingField
-        anchors.bottom: parent.bottom
+        anchors.bottom: btnShowDlg.top
         width: rectWidth * 3
         height: rectHeight * 3
 
@@ -179,7 +184,8 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         width: parent.width * 0.4
-        anchors.bottomMargin: 20
+        anchors.bottomMargin: parent.height * 0.04
+        anchors.rightMargin: parent.width * 0.04
         visible: false
         onClicked: {
             btnShowDlg.visible = false
@@ -188,7 +194,7 @@ Rectangle {
     }
 
     function clearFields() {
-        lbTurn.visible = true
+        lbTurn.visible = turnVisible && true
         dlgGameWon.close()
         utils.setDefaultValues()
         playingField.clearFields()

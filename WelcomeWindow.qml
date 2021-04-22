@@ -10,9 +10,9 @@ Rectangle {
         source: "qrc:/pictures/logo"
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: parent.height / 10
-        width: parent.width * 0.7
-        height: parent.width * 0.7
+        anchors.topMargin: parent.height * 0.04
+        width: parent.height * 0.45
+        height: parent.height * 0.45
     }
     CustomButton {
         id:btnNew

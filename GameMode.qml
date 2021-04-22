@@ -17,15 +17,15 @@ Rectangle {
         source: "qrc:/pictures/gamemode"
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: parent.height / 13
-        width: parent.width * 0.5
-        height: parent.width * 0.5
+        anchors.topMargin: parent.height * 0.04
+        width: parent.height * 0.3
+        height: parent.height * 0.3
     }
 
     CustomButton {
         id:btn1v1
         anchors.top: logo.bottom
-        anchors.topMargin: parent.height * 0.06
+        anchors.topMargin: parent.height * 0.04
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "Local 1 v 1"
@@ -35,7 +35,7 @@ Rectangle {
     CustomButton {
         id:btnAI
         anchors.top: btn1v1.bottom
-        anchors.topMargin: 40
+        anchors.topMargin: parent.height * 0.05
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "vs AI"
@@ -45,7 +45,7 @@ Rectangle {
     CustomButton {
         id:btnOnline1v1
         anchors.top: btnAI.bottom
-        anchors.topMargin: 40
+        anchors.topMargin: parent.height * 0.05
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "Online 1 v 1"
@@ -54,7 +54,7 @@ Rectangle {
     CustomButton {
         id:btnOnlineRnd
         anchors.top: btnOnline1v1.bottom
-        anchors.topMargin: 40
+        anchors.topMargin: parent.height * 0.05
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "Online random"
@@ -63,7 +63,7 @@ Rectangle {
     CustomButton {
         id:btnBack
         anchors.top: btnOnlineRnd.bottom
-        anchors.topMargin: 40
+        anchors.topMargin: parent.height * 0.05
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "Back"

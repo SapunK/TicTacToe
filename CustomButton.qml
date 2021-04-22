@@ -4,7 +4,7 @@ import QtQuick.Controls 2.12
 Button {
     id:customButton
     property string buttonText: ""
-    height: 50
+    height: parent.height * 0.08
     background: Rectangle{
         height: parent.height
         width: parent.width
