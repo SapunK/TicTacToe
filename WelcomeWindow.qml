@@ -7,17 +7,17 @@ Rectangle {
 
     Image {
         id: logo
-        source: "qrc:/pictures/icon"
+        source: "qrc:/pictures/logo"
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: parent.height / 8
-        width: parent.width * 0.6
-        height: parent.width * 0.6
+        anchors.topMargin: parent.height / 10
+        width: parent.width * 0.7
+        height: parent.width * 0.7
     }
     CustomButton {
         id:btnNew
         anchors.top: logo.bottom
-        anchors.topMargin: parent.height * 0.08
+        anchors.topMargin: parent.height * 0.04
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "New game"

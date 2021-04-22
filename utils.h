@@ -13,12 +13,15 @@ public:
     Q_INVOKABLE void setDefaultValues();
     void checkForWinner();
     Q_INVOKABLE void aiFillField();
+    Q_INVOKABLE void setGameFinished(bool finished) { m_bGameFinished = finished; }
+    bool winOrBlock(bool bTryBlocking);
 
 signals:
     void gameFinished(int winner);
     void aiFieldFilled(int i, int j);
 private:
     int m_values[3][3];
+    bool m_bGameFinished;
 };
 
 #endif // UTILS_H

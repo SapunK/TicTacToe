@@ -31,13 +31,14 @@ Rectangle {
                 lbWinner.color = mainAppColor
             }
             playingField.gameFinished = true
+            utils.setGameFinished(true)
             dlgGameWon.open()
         }
     }
 
     Keys.onReleased: {
         if (event.key === Qt.Key_Back) {
-            mainWindow.loadScreen("WelcomeWindow.qml")
+            mainWindow.loadScreen("GameMode.qml")
             event.accepted = true
         }
     }
@@ -45,14 +46,29 @@ Rectangle {
     Dialog {
         id: dlgGameWon
         width: parent.width * 0.8
-        height: lbWinner.height + btnNewGame.height + 80
+        height: lbWinner.height + btnNewGame.height + minimize.height + 80
         anchors.centerIn: parent
         closePolicy: Popup.NoAutoClose
 
+        Image {
+            id: minimize
+            source: "qrc:/pictures/minimize"
+            anchors.top: parent.top
+            anchors.right: parent.right
+            width: parent.height * 0.15
+            height: parent.height * 0.15
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    dlgGameWon.close()
+                    btnShowDlg.visible = true
+                }
+            }
+        }
         Label {
             id: lbWinner
             width: parent.width
-            anchors.top: parent.top
+            anchors.top: minimize.bottom
             anchors.topMargin: 12
             font.pixelSize: 30
             font.bold: true
@@ -150,11 +166,27 @@ Rectangle {
         }
     }
 
+    CustomButton {
+        id: btnShowDlg
+        buttonText: "Show dialog"
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        width: parent.width * 0.4
+        anchors.bottomMargin: 20
+        visible: false
+        onClicked: {
+            btnShowDlg.visible = false
+            dlgGameWon.open()
+        }
+    }
+
     function clearFields() {
         lbTurn.visible = true
         dlgGameWon.close()
         utils.setDefaultValues()
         playingField.clearFields()
+        if(playingField.aiGame && !firstPlayerTurn)
+            playingField.aiTurn()
     }
 
     function setAiGame(bAiGame) {

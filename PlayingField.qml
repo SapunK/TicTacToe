@@ -268,7 +268,7 @@ Rectangle {
         } else if(i === 1 && j === 1) {
             rectMid.lblText = value === 1 ? "X" : "O"
         } else if(i === 1 && j === 2) {
-            rectLeftMid.lblText = value === 1 ? "X" : "O"
+            rectRightMid.lblText = value === 1 ? "X" : "O"
         } else if(i === 2 && j === 0) {
             rectLeftBottom.lblText = value === 1 ? "X" : "O"
         } else if(i === 2 && j === 1) {

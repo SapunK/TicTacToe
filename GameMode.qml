@@ -3,15 +3,23 @@ import QtQuick 2.0
 Rectangle {
 
     color: mainBackgroundColor
+    focus: true
+
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Back) {
+            mainWindow.loadScreen("WelcomeWindow.qml")
+            event.accepted = true
+        }
+    }
 
     Image {
         id: logo
-//        source: "qrc:/pictures/icon"
+        source: "qrc:/pictures/gamemode"
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: parent.height / 10
-        width: parent.width * 0.6
-        height: parent.width * 0.6
+        anchors.topMargin: parent.height / 13
+        width: parent.width * 0.5
+        height: parent.width * 0.5
     }
 
     CustomButton {
