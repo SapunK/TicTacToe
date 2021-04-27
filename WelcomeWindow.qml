@@ -10,26 +10,37 @@ Rectangle {
         source: "qrc:/pictures/logo"
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: parent.height * 0.04
+        anchors.topMargin: parent.height * 0.03
         width: parent.height * 0.45
         height: parent.height * 0.45
     }
+
     CustomButton {
         id:btnNew
         anchors.top: logo.bottom
-        anchors.topMargin: parent.height * 0.04
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
-        buttonText: "New game"
+        buttonText: "Casual"
         onClicked: {
             mainWindow.loadScreen("GameMode.qml")
         }
     }
 
+    //TODO implement a way to play ranked matches online
+
+    CustomButton {
+        id:btnRanked
+        anchors.top: btnNew.bottom
+        anchors.topMargin: parent.height * 0.05
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width / 2
+        buttonText: "Ranked"
+    }
+
     CustomButton {
         id:btnCredits
-        anchors.top: btnNew.bottom
-        anchors.topMargin: 40
+        anchors.top: btnRanked.bottom
+        anchors.topMargin: parent.height * 0.05
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "Credits"
@@ -38,7 +49,7 @@ Rectangle {
     CustomButton {
         id:btnExit
         anchors.top: btnCredits.bottom
-        anchors.topMargin: 40
+        anchors.topMargin: parent.height * 0.05
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 2
         buttonText: "Exit game"
